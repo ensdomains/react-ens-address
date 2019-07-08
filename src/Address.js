@@ -8,7 +8,7 @@ import {
   ETH_ADDRESS_TYPE
 } from '../../utils/address.js'
 import Loader from './Loader.js'
-import { SingleNameBlockies } from '../../components/SingleName/SingleNameBlockies.js'
+import { SingleNameBlockies } from './Blockies.js'
 import warningImage from '../../assets/warning.svg'
 import searchImage from '../../assets/search.svg'
 

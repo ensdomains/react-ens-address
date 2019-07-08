@@ -2,7 +2,7 @@
   "name": "@ensdomains/react-ens-address",
   "version": "0.0.3",
   "description": "React ENS address component",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "files": [
     "src",
     "dist",
