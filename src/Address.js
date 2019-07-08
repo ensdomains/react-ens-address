@@ -6,11 +6,11 @@ import {
   getEthAddressType,
   isAddress,
   ETH_ADDRESS_TYPE
-} from '../../utils/address.js'
+} from './utils/address.js'
 import Loader from './Loader.js'
 import { SingleNameBlockies } from './Blockies.js'
-import warningImage from '../../assets/warning.svg'
-import searchImage from '../../assets/search.svg'
+import warningImage from './assets/warning.svg'
+import searchImage from './assets/search.svg'
 
 import './style.css'
 
@@ -157,10 +157,18 @@ function Address(props) {
             {isResolvingInProgress && <Loader className="loader" />}
             {!isResolvingInProgress && showBlockies()}
             {isResolveNameNotFound() && (
-              <img src={warningImage} className="icon-wrapper error-icon" />
+              <img
+                alt="warning icon"
+                src={warningImage}
+                className="icon-wrapper error-icon"
+              />
             )}
             {props.showSearchIcon && !inputValue && (
-              <img src={searchImage} className="icon-wrapper search-icon" />
+              <img
+                alt="search icon"
+                src={searchImage}
+                className="icon-wrapper search-icon"
+              />
             )}
           </div>
           <input
