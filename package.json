@@ -1,0 +1,55 @@
+{
+  "name": "@ensdomains/react-ens-address",
+  "version": "0.0.1",
+  "description": "React ENS address component",
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "dist",
+    "dist/*"
+  ],
+  "scripts": {
+    "test": "jest --watch --verbose",
+    "build": "babel src -d dist --ignore src/**/*.test.js,**/__tests__/**",
+    "pub": "yarn build && yarn publish"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-transform-async-to-generator": "^7.4.4",
+    "@babel/plugin-transform-regenerator": "^7.4.4",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/plugin-transform-spread": "^7.2.2",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@ensdomains/mock": "^1.0.12",
+    "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.6.0",
+    "babel-jest-assertions": "^0.1.0",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "coveralls": "^3.0.2",
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "esm": "^3.2.22",
+    "ganache-cli": "^6.4.3",
+    "jest": "^24.8.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "dependencies": {
+    "@ensdomains/ui": "^1.0.88"
+  }
+}
