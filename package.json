@@ -1,6 +1,6 @@
 {
   "name": "@ensdomains/react-ens-address",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "React ENS address component",
   "main": "dist/index.js",
   "files": [
@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "test": "jest --watch --verbose",
-    "build": "babel src -d dist --ignore src/**/*.test.js,**/__tests__/**",
+    "build": "babel src -d dist --ignore src/**/*.test.js,**/__tests__/** --copy-files",
     "pub": "yarn build && yarn publish"
   },
   "author": "Jeff Lau",
