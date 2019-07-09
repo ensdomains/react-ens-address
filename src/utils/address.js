@@ -1,4 +1,5 @@
 import { validateName } from '@ensdomains/ui'
+import { utils } from 'ethers'
 
 export const ETH_ADDRESS_TYPE = {
   name: 'name',
@@ -6,14 +7,19 @@ export const ETH_ADDRESS_TYPE = {
   error: 'error'
 }
 
+function isAddress(address) {
+  try {
+    utils.getAddress(address)
+  } catch (e) {
+    return false
+  }
+  return true
+}
+
 export function getEthAddressType(address) {
   if (!address) return ETH_ADDRESS_TYPE.error
 
-  if (
-    address.length === 42 &&
-    ((address.startsWith('0x') && !address.endsWith('.addr.reverse')) ||
-      (address.endsWith('.addr.reverse') && !address.startsWith('0x')))
-  ) {
+  if (isAddress(address)) {
     return ETH_ADDRESS_TYPE.address
   }
 
@@ -21,7 +27,7 @@ export function getEthAddressType(address) {
     validateName(address)
     return ETH_ADDRESS_TYPE.name
   } catch (e) {
-    return ETH_ADDRESS_TYPE.name
+    return ETH_ADDRESS_TYPE.error
   }
 }
 
