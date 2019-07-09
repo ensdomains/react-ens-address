@@ -163,13 +163,7 @@ function Address(props) {
                 className="icon-wrapper error-icon"
               />
             )}
-            {props.showSearchIcon && !inputValue && (
-              <img
-                alt="search icon"
-                src={searchImage}
-                className="icon-wrapper search-icon"
-              />
-            )}
+            {props.DefaultIcon && !inputValue && <DefaultIcon />}
           </div>
           <input
             value={inputValue}

@@ -25,8 +25,8 @@ E2E test: `cypress/integration/address.spec.js`
 - provider - Web3 provider **(required)**
 - placeholder - set custom placeholder. Default: 'Enter Ethereum name or address'
 - showBlockies - show digital image based on address (similar to github). Default: true
-- showSearchIcon - search icon on the left. Only present when nothing is typed. Default: true
-- onError - callback. Invokes every time error is happened or invalid name is typed. When typed name is corrected, invokes with null after error.
+- DefaultIcon: Component - Icon to show on the left when nothing has been typed. Default: null
+- onError - callback. Invokes every time error is occurs or invalid name is typed. When typed name is corrected, invokes with null after error.
 - onSuccess - callback. The same as onError callback, but invokes when address or name resolved.
 - className - any custom class for styling. Already implemented `small` class renders component in small size
 
