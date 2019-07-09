@@ -11,9 +11,23 @@ Please refer to `src/routes/Test.js` for examples.
 Demo: http://localhost:3000/Test
 E2E test: `cypress/integration/address.spec.js`
 
+### Installation
+
+React ENS Address Component can be installed via npm:
+
+```bash
+$ yarn add @ensdomains/react-ens-address
+```
+
+```bash
+$ npm install --save @ensdomains/react-ens-address
+```
+
 ### Basic usage
 
 ```
+import AddressInput from '@ensdomains/react-ens-address'
+
 <AddressInput provider={window.web3 || window.ethereum} />
 ```
 
