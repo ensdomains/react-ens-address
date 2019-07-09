@@ -7,7 +7,7 @@ export const ETH_ADDRESS_TYPE = {
   error: 'error'
 }
 
-function isAddress(address) {
+export function isAddress(address) {
   try {
     utils.getAddress(address)
   } catch (e) {
@@ -29,8 +29,4 @@ export function getEthAddressType(address) {
   } catch (e) {
     return ETH_ADDRESS_TYPE.error
   }
-}
-
-export function isAddress(address) {
-  return address && getEthAddressType(address) === ETH_ADDRESS_TYPE.address
 }
