@@ -185,7 +185,13 @@ Address.propTypes = {
   provider: PropTypes.object.isRequired,
   placeholder: PropTypes.string,
   showBlockies: PropTypes.bool,
-  showSearchIcon: PropTypes.bool,
+  DefaultIcon: (props, propName) => {
+    if (props[propName] && !isValidElementType(props[propName])) {
+      return new Error(
+        `Invalid prop 'component' supplied to 'Route': the prop is not a valid React component`
+      )
+    }
+  },
   onError: PropTypes.func,
   onResolve: PropTypes.func,
   className: PropTypes.string
@@ -195,7 +201,7 @@ Address.defaultProps = {
   presetValue: '',
   placeholder: 'Enter Ethereum name or address',
   showBlockies: true,
-  showSearchIcon: false,
+  DefaultIcon: null,
   className: '',
   onError: function() {},
   onResolve: function() {}
