@@ -57,7 +57,7 @@ import ENSAddress from '@ensdomains/react-ens-address'
 #### Basic Example 2
 
 ```jsx
-import { useState } from 'react'
+import React, { useState } from 'react'
 import ENSAddress from '@ensdomains/react-ens-address'
 
 function AddressInput() {
