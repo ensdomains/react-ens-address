@@ -26,9 +26,9 @@ function Address(props) {
       const result = await resolveName(input)
       setError(null)
       const { address, type, name } = result
-      if (type === 'name') {
+      if (type === ETH_ADDRESS_TYPE.name) {
         setResolvedAddress(address)
-      } else if (type === 'address') {
+      } else if (type === ETH_ADDRESS_TYPE.address) {
         setResolvedAddress(name)
       }
 
@@ -98,12 +98,14 @@ function Address(props) {
 
     if (addressType === ETH_ADDRESS_TYPE.name) {
       return await handleResolver(async () => ({
+        input: inputValue,
         address: await getAddress(inputValue),
         name: inputValue,
         type: 'name'
       }))
     } else if (addressType === ETH_ADDRESS_TYPE.address) {
       return await handleResolver(async () => ({
+        input: inputValue,
         name: (await getName(inputValue)).name,
         address: inputValue,
         type: 'address'
