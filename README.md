@@ -6,11 +6,6 @@ The Address component is a drop-in React component for your dapps. Anytime you n
 
 ![Default component vie](./src/doc/reverse.png)
 
-Please refer to `src/routes/Test.js` for examples.
-
-Demo: http://localhost:3000/Test
-E2E test: `cypress/integration/address.spec.js`
-
 ### Installation
 
 React ENS Address Component can be installed via npm:
@@ -54,10 +49,9 @@ All styling made in `style.css`. It can be take as a start point.
 
 ### Basic Example 1
 
-```
+```jsx
 import ENSAddress from '@ensdomains/react-ens-address'
-
-<ENSAddress provider={window.web3 || window.ethereum} />
+;<ENSAddress provider={window.web3 || window.ethereum} />
 ```
 
 #### Basic Example 2
