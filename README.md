@@ -49,3 +49,7 @@ import AddressInput from '@ensdomains/react-ens-address'
 All styling made in `style.css`. It can be take as a start point.
 `.cmp-address` - reserved class for that component.
 `.cmp-address.small` - for small type of component. Overriding other classes under that parent you can safety style a component.
+
+#### Credit
+
+Original version was built by [@industral](https://github.com/industral)

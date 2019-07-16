@@ -10,7 +10,6 @@ import {
 import Loader from './Loader.js'
 import { SingleNameBlockies } from './Blockies.js'
 import warningImage from './assets/warning.svg'
-import searchImage from './assets/search.svg'
 
 import './style.css'
 
