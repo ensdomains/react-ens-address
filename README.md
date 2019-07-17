@@ -51,7 +51,10 @@ All styling made in `style.css`. It can be take as a start point.
 
 ```jsx
 import ENSAddress from '@ensdomains/react-ens-address'
-;<ENSAddress provider={window.web3 || window.ethereum} />
+
+function Component() {
+  return <ENSAddress provider={window.web3 || window.ethereum} />
+}
 ```
 
 #### Basic Example 2
