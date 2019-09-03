@@ -1,6 +1,6 @@
 {
   "name": "@ensdomains/react-ens-address",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "description": "React ENS address component",
   "main": "dist/index.js",
   "files": [
