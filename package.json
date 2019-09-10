@@ -1,6 +1,10 @@
 {
   "name": "@ensdomains/react-ens-address",
+<<<<<<< HEAD
   "version": "0.0.15",
+=======
+  "version": "0.0.14",
+>>>>>>> 13f34b561b60f6f53b73c2855fb5843feefe6f83
   "description": "React ENS address component",
   "main": "dist/index.js",
   "files": [
@@ -51,7 +55,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
-    "@ensdomains/ui": "^1.0.92",
+    "@ensdomains/ui": "^1.1.15",
     "ethers": "^4.0.32",
     "lodash": "^4.17.13"
   },

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { setupENS, getAddress, getName } from '@ensdomains/ui'
 import _ from 'lodash'
@@ -20,20 +20,24 @@ function Address(props) {
   const [inputValue, setInputValue] = useState('')
   const [isResolvingInProgress, setIsResolvingInProgress] = useState(false)
   const [error, setError] = useState(null)
+  const currentInput = useRef()
 
   const inputDebouncerHandler = async input => {
     try {
       const result = await resolveName(input)
-      setError(null)
-      const { address, type, name } = result
-      if (type === ETH_ADDRESS_TYPE.name) {
-        setResolvedAddress(address)
-      } else if (type === ETH_ADDRESS_TYPE.address) {
-        setResolvedAddress(name)
-      }
+      if (input === currentInput.current) {
+        setError(null)
+        const { address, type, name } = result
+        if (type === ETH_ADDRESS_TYPE.name) {
+          setResolvedAddress(address)
+        } else if (type === ETH_ADDRESS_TYPE.address) {
+          setResolvedAddress(name)
+        }
 
-      props.onResolve(result)
-      props.onError(null)
+        props.onResolve(result)
+        props.onError(null)
+      }
+      //if newest continue, otherwise ignore
     } catch (error) {
       setError(error.toString())
       setResolvedAddress(null)
@@ -94,6 +98,8 @@ function Address(props) {
   }
 
   const resolveName = async inputValue => {
+    // update latest input resolving
+    currentInput.current = inputValue
     const addressType = getEthAddressType(inputValue)
 
     if (addressType === ETH_ADDRESS_TYPE.name) {
