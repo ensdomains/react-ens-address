@@ -53,15 +53,18 @@ function Address(props) {
 
   const inputDebouncer = _.debounce(inputDebouncerHandler, 500)
 
-  useEffect(async () => {
-    if (props.provider) {
-      await setupENS({ customProvider: props.provider })
-    } else {
-      await setupENS({})
+  useEffect(() => {
+    async function setup() {
+      if (props.provider) {
+        await setupENS({ customProvider: props.provider })
+      } else {
+        await setupENS({})
+      }
     }
+    setup()
   }, [props.provider])
 
-  useEffect(async () => {
+  useEffect(() => {
     if (props.presetValue.length !== 0) {
       handleInput(props.presetValue)
     }
