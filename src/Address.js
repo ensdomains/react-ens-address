@@ -100,7 +100,7 @@ function Address(props) {
   }, [props.presetValue, handleInput])
 
   if (!ENS) {
-    return 'loading...'
+    return <Loader className="loader" />
   }
 
   const handleResolver = async (fn) => {
