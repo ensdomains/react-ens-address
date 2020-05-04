@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-import { setupENS, getAddress, getName } from '@ensdomains/ui'
+import { setup as setupENS } from './ens'
 import _ from 'lodash'
 import {
   getEthAddressType,
   isAddress,
-  ETH_ADDRESS_TYPE
+  ETH_ADDRESS_TYPE,
 } from './utils/address.js'
 import Loader from './Loader.js'
 import { SingleNameBlockies } from './Blockies.js'
@@ -20,9 +20,10 @@ function Address(props) {
   const [inputValue, setInputValue] = useState('')
   const [isResolvingInProgress, setIsResolvingInProgress] = useState(false)
   const [error, setError] = useState(null)
+  const [ENS, setENS] = useState(null)
   const currentInput = useRef()
 
-  const inputDebouncerHandler = async input => {
+  const inputDebouncerHandler = async (input) => {
     try {
       const result = await resolveName(input)
       if (input === currentInput.current) {
@@ -45,7 +46,7 @@ function Address(props) {
       props.onResolve({
         address: input,
         name: null,
-        type: null
+        type: null,
       })
       props.onError(error)
     }
@@ -56,9 +57,11 @@ function Address(props) {
   useEffect(() => {
     async function setup() {
       if (props.provider) {
-        await setupENS({ customProvider: props.provider })
+        const { ens } = await setupENS({ customProvider: props.provider })
+        setENS(ens)
       } else {
-        await setupENS({})
+        const { ens } = await setupENS({})
+        setENS(ens)
       }
     }
     setup()
@@ -70,7 +73,11 @@ function Address(props) {
     }
   }, [props.presetValue])
 
-  const handleInput = async address => {
+  if (!ENS) {
+    return 'loading...'
+  }
+
+  const handleInput = async (address) => {
     if (!address || address.length === 0) {
       setInputValue('')
       setError(null)
@@ -87,7 +94,7 @@ function Address(props) {
     }
   }
 
-  const handleResolver = async fn => {
+  const handleResolver = async (fn) => {
     try {
       setIsResolvingInProgress(true)
       setResolvedAddress(null)
@@ -100,7 +107,7 @@ function Address(props) {
     }
   }
 
-  const resolveName = async inputValue => {
+  const resolveName = async (inputValue) => {
     // update latest input resolving
     currentInput.current = inputValue
     const addressType = getEthAddressType(inputValue)
@@ -108,16 +115,16 @@ function Address(props) {
     if (addressType === ETH_ADDRESS_TYPE.name) {
       return await handleResolver(async () => ({
         input: inputValue,
-        address: await getAddress(inputValue),
+        address: await ENS.getAddress(inputValue),
         name: inputValue,
-        type: 'name'
+        type: 'name',
       }))
     } else if (addressType === ETH_ADDRESS_TYPE.address) {
       return await handleResolver(async () => ({
         input: inputValue,
-        name: (await getName(inputValue)).name,
+        name: (await ENS.getName(inputValue)).name,
         address: inputValue,
-        type: 'address'
+        type: 'address',
       }))
     }
 
@@ -177,7 +184,7 @@ function Address(props) {
           </div>
           <input
             value={inputValue}
-            onChange={e => handleInput(e.currentTarget.value)}
+            onChange={(e) => handleInput(e.currentTarget.value)}
             placeholder={props.placeholder}
             spellCheck={false}
             name="ethereum"
@@ -204,7 +211,7 @@ Address.propTypes = {
   },
   onError: PropTypes.func,
   onResolve: PropTypes.func,
-  className: PropTypes.string
+  className: PropTypes.string,
 }
 
 Address.defaultProps = {
@@ -213,8 +220,8 @@ Address.defaultProps = {
   showBlockies: true,
   DefaultIcon: null,
   className: '',
-  onError: function() {},
-  onResolve: function() {}
+  onError: function () {},
+  onResolve: function () {},
 }
 
 export default Address
