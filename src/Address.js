@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  isValidElementType,
+  useCallback,
+} from 'react'
 import PropTypes from 'prop-types'
 import { setup as setupENS } from './ens'
 import _ from 'lodash'
@@ -67,31 +73,34 @@ function Address(props) {
     setup()
   }, [props.provider])
 
+  const handleInput = useCallback(
+    async (address) => {
+      if (!address || address.length === 0) {
+        setInputValue('')
+        setError(null)
+        setResolvedAddress(null)
+
+        if (inputDebouncer) {
+          inputDebouncer.cancel()
+        }
+      }
+
+      setInputValue(address)
+      if (inputDebouncer) {
+        inputDebouncer(address)
+      }
+    },
+    [inputDebouncer]
+  )
+
   useEffect(() => {
     if (props.presetValue.length !== 0) {
       handleInput(props.presetValue)
     }
-  }, [props.presetValue])
+  }, [props.presetValue, handleInput])
 
   if (!ENS) {
     return 'loading...'
-  }
-
-  const handleInput = async (address) => {
-    if (!address || address.length === 0) {
-      setInputValue('')
-      setError(null)
-      setResolvedAddress(null)
-
-      if (inputDebouncer) {
-        inputDebouncer.cancel()
-      }
-    }
-
-    setInputValue(address)
-    if (inputDebouncer) {
-      inputDebouncer(address)
-    }
   }
 
   const handleResolver = async (fn) => {
