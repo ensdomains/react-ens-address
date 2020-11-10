@@ -1,6 +1,6 @@
 {
   "name": "ensdomains-react-ens-address",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "React ENS address component",
   "main": "dist/index.js",
   "files": [
@@ -52,7 +52,7 @@
     "@emotion/styled": "^10.0.14",
     "ethers": "^4.0.32",
     "lodash": "^4.17.13",
-    "makoto-ensdomains-ui": "3.0.39"
+    "makoto-ensdomains-ui": "^3.0.42"
   },
   "repository": {
     "type": "git",
