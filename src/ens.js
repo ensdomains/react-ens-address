@@ -1,4 +1,4 @@
-import { setupENS } from '@ensdomains/ui'
+import { setupENS } from 'makoto-ensdomains-ui'
 
 let ens = {}
 
@@ -7,6 +7,7 @@ export async function setup({
   customProvider,
   ensAddress,
 }) {
+  console.log('***setup', {reloadOnAccountsChange, customProvider, ensAddress})
   const { ens: ensInstance } = await setupENS({
     reloadOnAccountsChange,
     customProvider,

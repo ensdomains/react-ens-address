@@ -1,4 +1,4 @@
-import { validateName } from '@ensdomains/ui'
+import { validateName } from 'makoto-ensdomains-ui'
 import { utils } from 'ethers'
 
 export const ETH_ADDRESS_TYPE = {
