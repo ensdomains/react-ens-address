@@ -62,13 +62,15 @@ function Address(props) {
 
   useEffect(() => {
     async function setup() {
-      if (props.provider) {
-        const { ens } = await setupENS({ customProvider: props.provider })
-        setENS(ens)
-      } else {
-        const { ens } = await setupENS({})
-        setENS(ens)
+      const options = {}
+      if(props.ensAddress){
+        options.ensAddress = props.ensAddress
       }
+      if (props.provider) {
+        options.customProvider = props.provider
+      }
+      const { ens } = await setupENS(options)
+      setENS(ens)
     }
     setup()
   }, [props.provider])
