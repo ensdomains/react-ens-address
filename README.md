@@ -79,9 +79,9 @@ function AddressInput() {
           }
         }}
       />
-      {resolvedInput.type === 'address' &&
+      {resolved.type === 'address' &&
         `We found your reverse record ${resolved.value}`}
-      {resolvedInput.type === 'name' &&
+      {resolved.type === 'name' &&
         `We found your address record ${resolved.value}`}
     </>
   )
