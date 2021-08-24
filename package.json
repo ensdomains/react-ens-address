@@ -1,5 +1,5 @@
 {
-  "name": "ensdomains-react-ens-address",
+  "name": "@ensdomains/react-ens-address",
   "version": "0.0.27",
   "description": "React ENS address component",
   "main": "dist/index.js",
@@ -50,6 +50,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
+    "@ensdomains/ui": "^3.0.40",
     "ethers": "^4.0.32",
     "lodash": "^4.17.13",
     "makoto-ensdomains-ui": "^3.0.42"
