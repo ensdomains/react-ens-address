@@ -195,7 +195,7 @@ function Address(props) {
           </div>
           <input
             value={inputValue}
-            onChange={(e) => handleInput(e.currentTarget.value)}
+            onChange={(e) => handleInput(e.currentTarget.value.trim())}
             placeholder={props.placeholder}
             spellCheck={false}
             name="ethereum"
